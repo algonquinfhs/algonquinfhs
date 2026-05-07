@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fetal Heart Surveillance Practice</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- bump v= if you want to force cache refresh -->
+  <link rel="stylesheet" href="styles.css?v=2">
+  <script src="script.js?v=2" defer></script>
+</head>
+<body>
+<div class="layout">
+  <div class="strip-card">
+    <div class="strip-title">Fetal Heart Rate Strip (simulated)</div>
+    <canvas id="fhrCanvas" width="900" height="350"></canvas>
+    <canvas id="tocoCanvas" width="900" height="150"></canvas>
+  </div>
+
+  <div class="side-panel">
+    <div class="top-controls">
+      <button id="newStripBtn" class="btn">New</button>
+      <button id="checkAllBtn" class="btn btn-secondary">Check</button>
+    </div>
+    <hr style="border:none;border-top:1px solid #e5e7eb;margin:4px 0 8px;">
+
+    <div style="display:flex; gap:8px;">
+      <button id="addAccelBtn" class="btn" style="align-self:flex-start;">
+        Add accel marker
+      </button>
+      <button id="checkAccelBtn" class="btn" style="align-self:flex-start;">
+        Check accels
+      </button>
+    </div>
+
+    <!-- Baseline -->
+    <div class="field-row">
+      <div class="field-group">
+        <label for="baselineField">Baseline FHR (bpm)</label>
+        <input id="baselineField" type="text" autocomplete="off" class="small-input">
+        <div id="baselineCorrect" class="correct-label" hidden></div>
+      </div>
+    </div>
+
+    <!-- Variability (radio buttons) -->
+    <div class="field-row variability-row">
+      <div class="field-group">
+        <label>Variability</label>
+        <div class="radio-group">
+          <label class="var-label" id="var-absent-label">
+            <input type="radio" name="variabilityChoice" value="absent">
+            Absent
+          </label>
+          <label class="var-label" id="var-minimal-label">
+            <input type="radio" name="variabilityChoice" value="minimal">
+            Minimal
+          </label>
+          <label class="var-label" id="var-moderate-label">
+            <input type="radio" name="variabilityChoice" value="moderate">
+            Moderate
+          </label>
+          <label class="var-label" id="var-marked-label">
+            <input type="radio" name="variabilityChoice" value="marked">
+            Marked
+          </label>
+        </div>
+        <div id="variabilityCorrect" class="correct-label" hidden></div>
+      </div>
+    </div>
+
+    <!-- Range: two inputs with hyphen -->
+    <div class="field-row">
+      <div class="field-group">
+        <label>Approx. Range (bpm)</label>
+        <div class="range-inputs">
+          <input id="rangeLowField" type="text" autocomplete="off" placeholder="130" class="small-input">
+          <span>–</span>
+          <input id="rangeHighField" type="text" autocomplete="off" placeholder="150" class="small-input">
+        </div>
+        <div id="rangeCorrect" class="correct-label" hidden></div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
